@@ -5,10 +5,10 @@
 		>{{ branchInfo.text }} {{ branchInfo.subtext }}</span>
 		<v-divider color="black" />
 		<v-row>
-			<v-col class="col-4">
+			<v-col class="col-md-4 col-sm-6 col-xs-12">
 				<v-img width="100%" max-height="300px" :src="branchInfo.image"></v-img>
 			</v-col>
-			<v-col class="col-8 text-center">
+			<v-col class="col-md-8 col-sm-6 col-xs-12 text-center">
 				<v-btn dark height="100px" class="headline mb-12" tile style="min-width: 100%">ԴԱՍԸՆԹԱՑԱՎԱՐ</v-btn>
 				<span class="red--text font-weight-bold display-1 mt-12 mx-auto">{{branchInfo.teacher }}</span>
 				<v-divider color="black" />

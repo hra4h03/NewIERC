@@ -1,8 +1,19 @@
 <template>
 	<div>
 		<v-toolbar dark color="deep-orange darken-4">
+			<v-menu offset-y>
+				<template v-slot:activator="{ on }">
+					<v-app-bar-nav-icon class="hidden-md-and-up" v-on="on" />
+				</template>
+				<v-list>
+					<v-list-item v-for="(item, index) in items" :key="index">
+						<v-list-item-title @click="$router.push(item.to)">{{ item.title }}</v-list-item-title>
+					</v-list-item>
+				</v-list>
+			</v-menu>
+
 			<v-avatar class="mx-3" @click="$router.push('/')">
-				<img src="https://ierc.am/media/IERC.png" alt />
+				<img src="https://ierc.am/media/IERC.png" />
 			</v-avatar>
 			<v-toolbar-title @click="$router.push('/')">
 				<span class="font-weight-bold">
@@ -13,11 +24,8 @@
 
 			<v-spacer></v-spacer>
 
-			<v-toolbar-items>
-				<v-btn text to="/about">Մեր մասին</v-btn>
-				<v-btn text to="/news">Նորություններ</v-btn>
-				<v-btn text to="/events">Միջոցառումներ</v-btn>
-				<v-btn text to="/courses">Դասընթացներ</v-btn>
+			<v-toolbar-items class="hidden-sm-and-down">
+				<v-btn v-for="(item, index) in items" :key="index" text :to="item.to">{{ item.title }}</v-btn>
 			</v-toolbar-items>
 
 			<v-spacer />
@@ -26,7 +34,30 @@
 </template>
 
 <script>
-export default {};
+export default {
+	data() {
+		return {
+			items: [
+				{
+					title: "Մեր մասին",
+					to: "/about"
+				},
+				{
+					title: "Նորություններ",
+					to: "/news"
+				},
+				{
+					title: "Միջոցառումներ",
+					to: "/events"
+				},
+				{
+					title: "Դասընթացներ",
+					to: "/courses"
+				}
+			]
+		};
+	}
+};
 </script>
 
 <style>
